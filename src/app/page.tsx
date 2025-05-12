@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Github, Mail, Smartphone } from "lucide-react";
@@ -21,11 +22,11 @@ export default function PortfolioPage() {
           </motion.div>
 
           <motion.p
-            className="text-lg text-gray-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
+  className="text-lg text-gray-400"
+  initial={{ opacity: 0, x: 50 }}   // Start 50px to the left
+  animate={{ opacity: 1, x: 0 }}     // Animate to original position
+  transition={{ duration: 0.8, delay: 0.5 }}
+>
             I build high-performance mobile apps using React Native
           </motion.p>
         </header>
@@ -49,14 +50,14 @@ export default function PortfolioPage() {
           >
             <motion.div
               key="todo-app"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8,delay: 0.5 }}
             >
               <Card>
                 <CardContent className="p-4 space-y-2">
-                  <h3 className="text-xl font-bold">ToDo App</h3>
-                  <p className="text-gray-300">A simple task manager built with React Native and Redux.</p>
+                  <h3 className="text-xl font-bold">Lava E Remit</h3>
+                  <p className="text-gray-300">A Fintact.</p>
                   <Button type="button">View Project</Button>
                 </CardContent>
               </Card>
