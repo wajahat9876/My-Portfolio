@@ -29,8 +29,8 @@ export default function HomePage() {
 
           <FadeIn delay={0.3}>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              I build high-performance, scalable mobile apps with React Native —
-              from fintech platforms to solar analytics and social products.
+              I build high-performance React websites and React Native mobile apps —
+              from fintech platforms and corporate dashboards to solar analytics and social products.
             </p>
           </FadeIn>
 

@@ -11,27 +11,41 @@ export type Project = {
 
 export const personalInfo = {
   name: "Wajahat Hassan",
-  title: "React Native Developer",
+  title: "React & React Native Developer",
   email: "wajahathassan9876@gmail.com",
   phone: "+923043630295",
   github: "https://github.com/wajahat9876",
   linkedin: "https://linkedin.com/in/wajahat-hassan-321aa2264",
   summary:
-    "Results-driven React Native Developer with 4+ years of experience designing, developing, and deploying scalable, high-performance mobile applications. Proven expertise in React Native, TypeScript, Redux Toolkit, Expo, Supabase, Firebase, and RevenueCat. Skilled at optimizing app performance, implementing secure authentication, and collaborating with remote, cross-functional teams. Passionate about delivering user-centric, maintainable, and high-performing mobile solutions that drive engagement and business outcomes.",
+    "Results-driven React & React Native Developer with 4+ years of experience building scalable mobile applications and modern React websites. Proven expertise in React, React Native, TypeScript, Next.js, Redux Toolkit, Expo, Supabase, Firebase, and RevenueCat. Skilled at crafting responsive web UIs, optimizing app performance, implementing secure authentication, and collaborating with remote, cross-functional teams. Passionate about delivering user-centric, maintainable, and high-performing solutions across web and mobile.",
 };
 
 export const skillCategories = [
   {
     title: "Languages & Frameworks",
     skills: [
-      "React Native",
       "React",
+      "React Native",
+      "Next.js",
       "TypeScript",
       "JavaScript (ES6+)",
       "Redux",
       "Redux Toolkit",
       "Expo Router",
       "Node.js",
+    ],
+  },
+  {
+    title: "Web Development",
+    skills: [
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Responsive Design",
+      "Framer Motion",
+      "Component Architecture",
+      "RESTful APIs",
+      "SEO-Friendly UI",
     ],
   },
   {
@@ -91,6 +105,7 @@ export const experience = [
     period: "Feb 2023 – Present",
     highlights: [
       "Led development of 5+ scalable React Native apps, achieving 30% faster load times with Hermes and Flipper optimizations.",
+      "Built responsive React websites and dashboards for fintech products with modern UI, routing, and API integrations.",
       "Implemented JWT & biometric authentication, enhancing security and reducing login failures by 25%.",
       "Built reusable UI components with TypeScript and Styled Components, reducing duplicate code by 40%.",
       "Integrated Supabase, Firebase, and REST APIs for seamless real-time data synchronization.",
@@ -104,7 +119,7 @@ export const experience = [
     location: "Islamabad, Pakistan",
     period: "Dec 2021 – Feb 2023",
     highlights: [
-      "Assisted in development and deployment of mobile apps, contributing to UI enhancements and API integrations.",
+      "Assisted in development and deployment of mobile apps and React web interfaces, contributing to UI enhancements and API integrations.",
       "Gained expertise in state management, debugging, and CI/CD workflows.",
       "Collaborated on troubleshooting and performance optimizations, improving responsiveness by 15%.",
     ],
@@ -115,17 +130,17 @@ export const projects: Project[] = [
   {
     id: "ecc",
     name: "Easy Cash Card (ECC)",
-    category: "Fintech App",
+    category: "Fintech Website",
     stack: [
-      "React Native",
+      "React",
       "TypeScript",
-      "Redux Toolkit",
-      "Expo Router",
-      "Styled Components",
+      "Next.js",
+      "Tailwind CSS",
+      "Responsive UI",
     ],
     highlights: [
-      "Multi-currency transactions with JWT, OTP, and biometric authentication.",
-      "Real-time updates with optimized navigation, reducing transaction time by 20%.",
+      "Corporate fintech website with business account onboarding, login/signup flows, and product showcase.",
+      "Responsive React UI with secure authentication and multi-currency business account features.",
     ],
     screenshot: "/projects/screenshots/ecc.png",
     demo: "https://play.google.com/store/apps/details?id=com.ecc.easycashcard",
@@ -151,17 +166,17 @@ export const projects: Project[] = [
   {
     id: "lava-e-remit",
     name: "Lava e Remit",
-    category: "Fintech App",
+    category: "Fintech Website",
     stack: [
-      "React Native",
+      "React",
       "TypeScript",
-      "Redux Toolkit",
-      "Expo Router",
-      "React Navigation",
+      "Next.js",
+      "RESTful APIs",
+      "Responsive UI",
     ],
     highlights: [
-      "Real-time money transfer and currency exchange, increasing user retention by 15%.",
-      "Push notifications and transaction history tracking for better engagement.",
+      "International money transfer platform with live currency conversion and transfer calculator.",
+      "Built with React for fast, responsive UX across send money, tracking, and contact flows.",
     ],
     screenshot: "/projects/screenshots/lava-e-remit.png",
   },
@@ -226,7 +241,7 @@ export const education = [
 
 export const stats = [
   { label: "Years Experience", value: "4+" },
-  { label: "Apps Delivered", value: "5+" },
+  { label: "Apps & Websites", value: "5+" },
   { label: "Faster Load Times", value: "30%" },
   { label: "Fewer Production Bugs", value: "20%" },
 ];

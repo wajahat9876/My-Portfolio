@@ -7,9 +7,9 @@ import NavBar from "@/components/global/Navbar";
 
 
 export const metadata: Metadata = {
-  title: "Wajahat Hassan | React Native Developer",
+  title: "Wajahat Hassan | React & React Native Developer",
   description:
-    "Portfolio of Wajahat Hassan — React Native Developer with 4+ years of experience building scalable fintech, solar, and social mobile applications.",
+    "Portfolio of Wajahat Hassan — React & React Native Developer with 4+ years of experience building scalable web applications, mobile apps, fintech platforms, and modern user interfaces.",
 };
 
 export default function RootLayout({
