@@ -128,6 +128,7 @@ export const projects: Project[] = [
       "Multi-currency transactions with JWT, OTP, and biometric authentication.",
       "Real-time updates with optimized navigation, reducing transaction time by 20%.",
     ],
+    screenshot: "/projects/screenshots/ecc.png",
     demo: "https://play.google.com/store/apps/details?id=com.ecc.easycashcard",
   },
   {
