@@ -165,6 +165,7 @@ export const projects: Project[] = [
       "Real-time money transfer and currency exchange, increasing user retention by 15%.",
       "Push notifications and transaction history tracking for better engagement.",
     ],
+    screenshot: "/projects/screenshots/lava-e-remit.png",
   },
   {
     id: "muslim-hearts",
