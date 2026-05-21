@@ -5,7 +5,6 @@ export type Project = {
   stack: string[];
   highlights: string[];
   screenshot?: string;
-  video?: string;
   github?: string;
   demo?: string;
 };
@@ -147,7 +146,6 @@ export const projects: Project[] = [
       "OTP & biometric login, reducing user login issues by 30%.",
     ],
     screenshot: "/projects/screenshots/easy-e-money.jpg",
-    video: "/projects/videos/easy-e-money.mp4",
     github: "https://github.com/anemoia-dev/easyemoney-app-v2/tree/sdk_54",
   },
   {
@@ -185,7 +183,6 @@ export const projects: Project[] = [
       "Supabase backend and RevenueCat monetization, boosting in-app revenue by 10%.",
     ],
     screenshot: "/projects/screenshots/muslim-hearts.jpg",
-    video: "/projects/videos/muslim-hearts.mp4",
   },
   {
     id: "onetrionix",
@@ -203,7 +200,6 @@ export const projects: Project[] = [
       "Secure login and settings management across iOS and Android.",
     ],
     screenshot: "/projects/screenshots/onetrionix.jpg",
-    video: "/projects/videos/onetrionix.mp4",
     github: "https://github.com/wajahat9876/OneTronix/tree/demo",
   },
   {
@@ -216,7 +212,6 @@ export const projects: Project[] = [
       "Cross-platform mobile game with score tracking and polished UI.",
     ],
     screenshot: "/projects/screenshots/flappy-bird.jpg",
-    video: "/projects/videos/flappy-bird.mp4",
     github: "https://github.com/wajahat9876/flappy-bird",
   },
 ];
@@ -231,7 +226,7 @@ export const education = [
 
 export const stats = [
   { label: "Years Experience", value: "4+" },
-  { label: "Apps Delivered", value: "6+" },
-  { label: "Performance Gain", value: "60%" },
-  { label: "Bug Reduction", value: "40%" },
+  { label: "Apps Delivered", value: "5+" },
+  { label: "Faster Load Times", value: "30%" },
+  { label: "Fewer Production Bugs", value: "20%" },
 ];

@@ -3,9 +3,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Project } from "@/data/portfolio";
 import * as motion from "framer-motion/client";
-import { ExternalLink, Github, Play } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
-import { useRef, useState } from "react";
 
 type ProjectCardProps = {
   project: Project;
@@ -13,53 +12,17 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [showVideo, setShowVideo] = useState(false);
-
-  const toggleMedia = () => {
-    if (!project.video) return;
-    setShowVideo((prev) => !prev);
-  };
-
   return (
     <Card className="h-full overflow-hidden hover:border-[#FFD700]/30 transition-colors duration-300">
-      {(project.screenshot || project.video) && (
-        <div className="relative aspect-video bg-gray-950 overflow-hidden group">
-          {showVideo && project.video ? (
-            <video
-              ref={videoRef}
-              src={project.video}
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          ) : project.screenshot ? (
-            <Image
-              src={project.screenshot}
-              alt={`${project.name} preview`}
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
-          ) : null}
-
-          {project.video && (
-            <button
-              type="button"
-              onClick={toggleMedia}
-              className="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 text-white text-xs hover:bg-[#FFD700] hover:text-black transition-colors"
-            >
-              {showVideo ? (
-                "Show Screenshot"
-              ) : (
-                <>
-                  <Play className="w-3 h-3" /> Watch Demo
-                </>
-              )}
-            </button>
-          )}
+      {project.screenshot && (
+        <div className="relative w-full h-56 sm:h-64 bg-gray-950 border-b border-gray-800">
+          <Image
+            src={project.screenshot}
+            alt={`${project.name} preview`}
+            fill
+            className="object-contain p-2"
+            sizes="(max-width: 640px) 100vw, 50vw"
+          />
         </div>
       )}
 
