@@ -143,7 +143,6 @@ export const projects: Project[] = [
       "Responsive React UI with secure authentication and multi-currency business account features.",
     ],
     screenshot: "/projects/screenshots/ecc.png",
-    demo: "https://play.google.com/store/apps/details?id=com.ecc.easycashcard",
   },
   {
     id: "easy-e-money",
