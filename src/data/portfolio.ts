@@ -7,6 +7,12 @@ export type Project = {
   screenshot?: string;
   github?: string;
   demo?: string;
+  /** Frame used to present the screenshot: browser chrome vs. phone body. */
+  frame?: "browser" | "phone";
+  /** Address shown in the mock browser bar. */
+  domain?: string;
+  /** Tailwind gradient stops for the banner backdrop behind the frame. */
+  accent?: string;
 };
 
 export const personalInfo = {
@@ -143,6 +149,9 @@ export const projects: Project[] = [
       "Responsive React UI with secure authentication and multi-currency business account features.",
     ],
     screenshot: "/projects/screenshots/ecc.png",
+    frame: "browser",
+    domain: "easycashcard.com",
+    accent: "from-red-500/25 via-rose-600/10 to-transparent",
   },
   {
     id: "easy-e-money",
@@ -160,6 +169,8 @@ export const projects: Project[] = [
       "OTP & biometric login, reducing user login issues by 30%.",
     ],
     screenshot: "/projects/screenshots/easy-e-money.jpg",
+    frame: "phone",
+    accent: "from-blue-500/25 via-indigo-600/10 to-transparent",
     github: "https://github.com/anemoia-dev/easyemoney-app-v2/tree/sdk_54",
   },
   {
@@ -178,6 +189,9 @@ export const projects: Project[] = [
       "Built with React for fast, responsive UX across send money, tracking, and contact flows.",
     ],
     screenshot: "/projects/screenshots/lava-e-remit.png",
+    frame: "browser",
+    domain: "lavaeremit.com",
+    accent: "from-orange-500/25 via-amber-600/10 to-transparent",
   },
   {
     id: "muslim-hearts",
@@ -197,6 +211,8 @@ export const projects: Project[] = [
       "Supabase backend and RevenueCat monetization, boosting in-app revenue by 10%.",
     ],
     screenshot: "/projects/screenshots/muslim-hearts.jpg",
+    frame: "phone",
+    accent: "from-rose-500/25 via-pink-600/10 to-transparent",
   },
   {
     id: "onetrionix",
@@ -214,6 +230,8 @@ export const projects: Project[] = [
       "Secure login and settings management across iOS and Android.",
     ],
     screenshot: "/projects/screenshots/onetrionix.jpg",
+    frame: "phone",
+    accent: "from-emerald-500/25 via-teal-600/10 to-transparent",
     github: "https://github.com/wajahat9876/OneTronix/tree/demo",
   },
   {
@@ -226,6 +244,8 @@ export const projects: Project[] = [
       "Cross-platform mobile game with score tracking and polished UI.",
     ],
     screenshot: "/projects/screenshots/flappy-bird.jpg",
+    frame: "phone",
+    accent: "from-sky-500/25 via-cyan-600/10 to-transparent",
     github: "https://github.com/wajahat9876/flappy-bird",
   },
 ];

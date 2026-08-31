@@ -1,7 +1,14 @@
+import { AnimatedBackground } from "@/components/ui/animated-background";
+
 export default function Layout({
-  children, // will be a page or nested layout
+  children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="min-h-screen bg-black">{children}</div>;
+  return (
+    <div className="relative min-h-screen bg-black">
+      <AnimatedBackground />
+      {children}
+    </div>
+  );
 }

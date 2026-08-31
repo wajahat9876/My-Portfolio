@@ -4,12 +4,13 @@ import { AnimatedProjectCard } from "@/components/projects/ProjectCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
 import { education, experience, personalInfo, projects } from "@/data/portfolio";
+import { hoverLift, smoothTransition, springTransition } from "@/lib/animations";
 import * as motion from "framer-motion/client";
 import { Briefcase, GraduationCap, Layers } from "lucide-react";
 
 export default function ResumePage() {
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-10">
+    <div className="min-h-screen text-white px-6 py-10">
       <div className="max-w-5xl mx-auto space-y-12">
         <header className="space-y-2">
           <FadeIn direction="down">
@@ -33,6 +34,7 @@ export default function ResumePage() {
           <div className="space-y-6">
             {experience.map((job, index) => (
               <FadeIn key={job.company} delay={0.1 * index}>
+                <motion.div whileHover={hoverLift} transition={springTransition}>
                 <Card className="hover:border-[#FFD700]/30 transition-colors duration-300">
                   <CardContent className="p-6 space-y-4">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
@@ -47,13 +49,14 @@ export default function ResumePage() {
                       </span>
                     </div>
                     <ul className="space-y-2">
-                      {job.highlights.map((item) => (
+                      {job.highlights.map((item, highlightIndex) => (
                         <motion.li
                           key={item}
                           className="text-gray-300 text-sm leading-relaxed flex gap-2"
                           initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ ...smoothTransition, delay: 0.05 * highlightIndex }}
                         >
                           <span className="text-[#FFD700] mt-1.5 shrink-0">•</span>
                           <span>{item}</span>
@@ -62,6 +65,7 @@ export default function ResumePage() {
                     </ul>
                   </CardContent>
                 </Card>
+                </motion.div>
               </FadeIn>
             ))}
           </div>
@@ -97,6 +101,7 @@ export default function ResumePage() {
 
           {education.map((item, index) => (
             <FadeIn key={item.degree} delay={0.1 * index}>
+              <motion.div whileHover={hoverLift} transition={springTransition}>
               <Card>
                 <CardContent className="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                   <div>
@@ -106,6 +111,7 @@ export default function ResumePage() {
                   <span className="text-sm text-[#FFD700]">{item.period}</span>
                 </CardContent>
               </Card>
+              </motion.div>
             </FadeIn>
           ))}
         </section>

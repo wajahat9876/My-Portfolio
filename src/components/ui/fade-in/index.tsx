@@ -2,12 +2,15 @@
 
 import * as motion from "framer-motion/client";
 import { ReactNode } from "react";
+import { smoothTransition } from "@/lib/animations";
 
 type FadeInProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
   direction?: "up" | "down" | "left" | "right" | "none";
+  once?: boolean;
+  amount?: number;
 };
 
 const directionMap = {
@@ -23,6 +26,8 @@ export function FadeIn({
   className = "",
   delay = 0,
   direction = "up",
+  once = true,
+  amount = 0.2,
 }: FadeInProps) {
   const variants = directionMap[direction];
 
@@ -30,8 +35,9 @@ export function FadeIn({
     <motion.div
       className={className}
       initial={variants.initial}
-      animate={variants.animate}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      whileInView={variants.animate}
+      viewport={{ once, amount }}
+      transition={{ ...smoothTransition, delay }}
     >
       {children}
     </motion.div>
