@@ -1,58 +1,39 @@
 "use client";
 
+import { Hero } from "@/components/home/Hero";
 import { AnimatedProjectCard } from "@/components/projects/ProjectCard";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CountUp } from "@/components/ui/count-up";
 import { FadeIn } from "@/components/ui/fade-in";
+import { Marquee } from "@/components/ui/marquee";
+import { RevealText } from "@/components/ui/reveal-text";
 import { personalInfo, projects, stats } from "@/data/portfolio";
 import { hoverLift, springTransition, staggerContainer, staggerItem } from "@/lib/animations";
 import * as motion from "framer-motion/client";
 import { ArrowRight, Github, Linkedin, Mail, Smartphone } from "lucide-react";
 import Link from "next/link";
 
+const marqueeItems = [
+  "React",
+  "React Native",
+  "TypeScript",
+  "Next.js",
+  "Redux Toolkit",
+  "Expo",
+  "Supabase",
+  "Tailwind CSS",
+  "Node.js",
+  "Framer Motion",
+];
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen text-white px-6 py-10">
-      <div className="max-w-5xl mx-auto space-y-16">
-        <header className="text-center space-y-6">
-          <FadeIn direction="down">
-            <p className="text-[#FFD700] font-medium tracking-widest uppercase text-sm">
-              {personalInfo.title}
-            </p>
-          </FadeIn>
+    <div className="min-h-screen text-white">
+      <Hero />
 
-          <FadeIn delay={0.15} direction="down">
-            <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-white via-[#FFD700] to-gray-400 bg-clip-text text-transparent animate-gradient-text">
-              Hi, I&apos;m {personalInfo.name}
-            </h1>
-          </FadeIn>
+      <Marquee items={marqueeItems} />
 
-          <FadeIn delay={0.3}>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              I build high-performance React websites and React Native mobile apps —
-              from fintech platforms and corporate dashboards to solar analytics and social products.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.45}>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/about">
-                <Button type="button">About Me</Button>
-              </Link>
-              <Link href="/resume">
-                <Button type="button">View Resume</Button>
-              </Link>
-              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer">
-                <Button type="button">GitHub</Button>
-              </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
-                <Button type="button">LinkedIn</Button>
-              </a>
-            </div>
-          </FadeIn>
-        </header>
-
+      <div className="max-w-6xl mx-auto space-y-24 px-6 py-24">
         <motion.section
           className="grid grid-cols-2 sm:grid-cols-4 gap-4"
           variants={staggerContainer}
@@ -79,8 +60,13 @@ export default function HomePage() {
 
         <section className="space-y-6">
           <FadeIn>
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-semibold">Featured Projects</h2>
+            <div className="flex items-end justify-between border-b border-white/10 pb-6">
+              <h2 className="font-black uppercase leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,6vw,4.5rem)]">
+                <span className="block font-[family-name:var(--font-mono)] text-xs font-normal tracking-[0.3em] text-gray-500">
+                  Selected
+                </span>
+                <RevealText text="Projects" />
+              </h2>
               <Link
                 href="/resume"
                 className="text-[#FFD700] text-sm flex items-center gap-1 hover:gap-2 transition-all group"
@@ -110,7 +96,12 @@ export default function HomePage() {
 
         <section className="space-y-6">
           <FadeIn>
-            <h2 className="text-2xl font-semibold">Get In Touch</h2>
+            <h2 className="border-b border-white/10 pb-6 font-black uppercase leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,6vw,4.5rem)]">
+              <span className="block font-[family-name:var(--font-mono)] text-xs font-normal tracking-[0.3em] text-gray-500">
+                Start a conversation
+              </span>
+              <RevealText text="Let's work together" />
+            </h2>
           </FadeIn>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
