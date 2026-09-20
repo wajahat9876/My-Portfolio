@@ -10,18 +10,31 @@ import { ExternalLink, Github } from "lucide-react";
 type ProjectCardProps = {
   project: Project;
   variant?: "compact" | "detailed";
+  index?: number;
 };
 
-export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  variant = "compact",
+  index,
+}: ProjectCardProps) {
   return (
-    <Card className="h-full overflow-hidden hover:border-[#FFD700]/30 transition-colors duration-300 group">
+    <Card className="h-full overflow-hidden hover:border-[#FFD700]/40 hover:shadow-[0_0_40px_-12px_rgba(255,215,0,0.35)] transition-all duration-300 group">
       <ProjectBanner project={project} />
 
       <CardContent className={variant === "detailed" ? "p-6 space-y-4" : "p-5 space-y-3"}>
         <div>
-          <span className="text-xs text-[#FFD700] uppercase tracking-wide">
-            {project.category}
-          </span>
+          <div className="flex items-center gap-3">
+            {index !== undefined && (
+              <span className="font-[family-name:var(--font-mono)] text-xs text-gray-600">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            )}
+            <span className="text-xs text-[#FFD700] uppercase tracking-wide">
+              {project.category}
+            </span>
+            <span className="h-px flex-1 bg-white/10" />
+          </div>
           <h3 className="text-xl font-bold mt-1 group-hover:text-[#FFD700] transition-colors duration-300">
             {project.name}
           </h3>
@@ -112,7 +125,7 @@ export function AnimatedProjectCard({
       transition={{ ...smoothTransition, delay: 0.05 * index }}
       whileHover={hoverLift}
     >
-      <ProjectCard project={project} variant={variant} />
+      <ProjectCard project={project} variant={variant} index={index} />
     </motion.div>
   );
 }

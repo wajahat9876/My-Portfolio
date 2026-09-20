@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Urbanist } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/global/Navbar";
-import { SmoothScroll } from "@/components/global/SmoothScroll";
-import { Cursor } from "@/components/ui/cursor";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 const display = Urbanist({
   subsets: ["latin"],
@@ -32,9 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${mono.variable}`}>
       <body className="antialiased bg-black font-[family-name:var(--font-display)]">
-        <SmoothScroll />
-        <Cursor />
-        <ScrollProgress />
         <NavBar />
         {children}
       </body>
