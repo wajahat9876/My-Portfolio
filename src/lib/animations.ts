@@ -22,7 +22,7 @@ export const staggerContainer = {
   initial: {},
   animate: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.06,
     },
   },
 };
@@ -39,12 +39,12 @@ export const scaleIn = {
 
 export const springTransition = {
   type: "spring" as const,
-  stiffness: 260,
+  stiffness: 380,
   damping: 20,
 };
 
 export const smoothTransition = {
-  duration: 0.6,
+  duration: 0.38,
   ease: [0.22, 1, 0.36, 1] as const,
 };
 

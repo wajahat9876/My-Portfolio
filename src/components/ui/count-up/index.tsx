@@ -29,7 +29,7 @@ export function CountUp({ value, className = "" }: CountUpProps) {
         hasAnimated.current = true;
 
         const { number, suffix } = parsed;
-        const duration = 1200;
+        const duration = 700;
         const start = performance.now();
 
         const tick = (now: number) => {

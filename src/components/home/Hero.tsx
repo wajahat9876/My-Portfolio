@@ -46,7 +46,7 @@ export function Hero() {
           className="mt-6 inline-block -rotate-2 rounded-md bg-[#FFD700] px-4 py-2 shadow-[0_8px_30px_-8px_rgba(255,215,0,0.6)]"
           initial={{ opacity: 0, scale: 0.8, rotate: 6 }}
           animate={{ opacity: 1, scale: 1, rotate: -2 }}
-          transition={{ delay: 0.7, type: "spring", stiffness: 220, damping: 16 }}
+          transition={{ delay: 0.35, type: "spring", stiffness: 340, damping: 18 }}
         >
           <span className="font-[family-name:var(--font-mono)] text-xs font-bold uppercase tracking-[0.2em] text-black">
             {personalInfo.title}

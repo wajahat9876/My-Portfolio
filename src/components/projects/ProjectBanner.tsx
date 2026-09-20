@@ -36,7 +36,7 @@ export function ProjectBanner({ project }: { project: Project }) {
       <motion.div
         className="relative w-full h-full flex items-end justify-center"
         whileHover={{ scale: 1.04, y: -2 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       >
         {isPhone ? (
           <PhoneFrame project={project} />

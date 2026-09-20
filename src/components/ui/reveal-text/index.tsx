@@ -11,7 +11,7 @@ const wordVariants: Variants = {
   hidden: { y: "110%" },
   visible: (i: number) => ({
     y: "0%",
-    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: i },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i },
   }),
 };
 
@@ -51,7 +51,7 @@ export function RevealText({
           <motion.span
             className="inline-block"
             variants={wordVariants}
-            custom={delay + i * 0.07}
+            custom={delay + i * 0.04}
           >
             {word}
             {i < words.length - 1 ? " " : ""}

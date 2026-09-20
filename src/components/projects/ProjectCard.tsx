@@ -41,7 +41,7 @@ export function ProjectCard({ project, variant = "compact" }: ProjectCardProps) 
                 initial={{ opacity: 0, x: -8 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ ...smoothTransition, delay: 0.05 * i }}
+                transition={{ ...smoothTransition, delay: 0.03 * i }}
               >
                 <span className="text-[#FFD700] mt-1.5 shrink-0">•</span>
                 <span>{item}</span>
@@ -109,7 +109,7 @@ export function AnimatedProjectCard({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ ...smoothTransition, delay: 0.1 * index }}
+      transition={{ ...smoothTransition, delay: 0.05 * index }}
       whileHover={hoverLift}
     >
       <ProjectCard project={project} variant={variant} />
