@@ -5,7 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Project } from "@/data/portfolio";
 import { hoverLift, springTransition, smoothTransition } from "@/lib/animations";
 import * as motion from "framer-motion/client";
-import { ExternalLink, Github } from "lucide-react";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 type ProjectCardProps = {
   project: Project;
@@ -18,11 +20,40 @@ export function ProjectCard({
   variant = "compact",
   index,
 }: ProjectCardProps) {
-  return (
-    <Card className="h-full overflow-hidden hover:border-[#FFD700]/40 hover:shadow-[0_0_40px_-12px_rgba(255,215,0,0.35)] transition-all duration-300 group">
-      <ProjectBanner project={project} />
+  // App projects put the phone beside the text: a portrait screenshot above
+  // wide text always leaves dead space either side of it.
+  const isPhone = project.frame === "phone";
 
-      <CardContent className={variant === "detailed" ? "p-6 space-y-4" : "p-5 space-y-3"}>
+  return (
+    <Card
+      className={`relative h-full overflow-hidden hover:border-[#FFD700]/40 hover:shadow-[0_0_40px_-12px_rgba(255,215,0,0.35)] transition-all duration-300 group ${
+        isPhone ? "flex items-stretch min-h-[320px]" : ""
+      }`}
+    >
+      {/* Covers the whole card. Kept as an overlay rather than wrapping the
+          card, because the card already contains its own GitHub/demo links
+          and anchors cannot nest. */}
+      <Link
+        href={`/projects/${project.id}`}
+        className="absolute inset-0 z-10"
+        aria-label={`View ${project.name} details`}
+      />
+
+      {isPhone ? (
+        <PhoneColumn project={project} />
+      ) : (
+        <ProjectBanner project={project} />
+      )}
+
+      <CardContent
+        className={`${isPhone ? "flex-1 self-center p-5 space-y-3" : ""} ${
+          !isPhone && variant === "detailed"
+            ? "p-6 space-y-4"
+            : !isPhone
+              ? "p-5 space-y-3"
+              : ""
+        }`}
+      >
         <div>
           <div className="flex items-center gap-3">
             {index !== undefined && (
@@ -81,8 +112,7 @@ export function ProjectCard({
           )}
         </div>
 
-        {(project.github || project.demo) && (
-          <div className="flex flex-wrap gap-3 pt-1">
+        <div className="relative z-20 flex flex-wrap items-center gap-3 pt-1">
             {project.github && (
               <a
                 href={project.github}
@@ -105,10 +135,52 @@ export function ProjectCard({
                 Live Demo
               </a>
             )}
-          </div>
-        )}
+
+          <span className="ml-auto inline-flex items-center gap-1 text-sm text-gray-500 transition-colors group-hover:text-[#FFD700]">
+            Details
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </div>
       </CardContent>
     </Card>
+  );
+}
+
+/**
+ * Phone screenshot shown whole down the left edge of an app card.
+ * `object-contain` guarantees the shot is never cropped; the blurred copy
+ * behind it absorbs the small letterbox when a source is off-ratio.
+ */
+function PhoneColumn({ project }: { project: Project }) {
+  if (!project.screenshot) return null;
+
+  return (
+    <div className="relative w-[33%] shrink-0 self-stretch overflow-hidden border-r border-white/10 bg-gray-950">
+      {/* Accent wash only. A blurred copy of the screenshot used to sit here,
+          but the phone leaves barely any slack in this column, so it cost a
+          full-size blur filter per card for something you could not see. */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${
+          project.accent ?? "from-[#FFD700]/15 to-transparent"
+        }`}
+      />
+
+      <motion.div
+        className="relative h-full w-full p-4"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/15 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.9)]">
+          <Image
+            src={project.screenshot}
+            alt={`${project.name} app preview`}
+            fill
+            className="object-contain"
+            sizes="(max-width: 640px) 40vw, 200px"
+          />
+        </div>
+      </motion.div>
+    </div>
   );
 }
 

@@ -7,24 +7,75 @@ import { CountUp } from "@/components/ui/count-up";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Marquee } from "@/components/ui/marquee";
 import { RevealText } from "@/components/ui/reveal-text";
-import { personalInfo, projects, stats } from "@/data/portfolio";
+import {
+  appProjects,
+  personalInfo,
+  stats,
+  webProjects,
+  type Project,
+} from "@/data/portfolio";
 import { hoverLift, springTransition, staggerContainer, staggerItem } from "@/lib/animations";
 import * as motion from "framer-motion/client";
-import { ArrowRight, Github, Linkedin, Mail, Smartphone } from "lucide-react";
-import Link from "next/link";
+import { Github, Linkedin, Mail, Smartphone } from "lucide-react";
 
 const marqueeItems = [
   "React",
   "React Native",
   "TypeScript",
   "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "Supabase",
   "Redux Toolkit",
   "Expo",
-  "Supabase",
+  "Jest",
+  "SQA",
+  "Claude Code",
+  "Cursor",
   "Tailwind CSS",
-  "Node.js",
-  "Framer Motion",
+  "Vercel",
 ];
+
+function ProjectSection({
+  id,
+  eyebrow,
+  title,
+  items,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  items: Project[];
+}) {
+  return (
+    <section id={id} className="scroll-mt-24 space-y-6">
+      <FadeIn>
+        <div className="flex items-end justify-between border-b border-white/10 pb-6">
+          <h2 className="font-black uppercase leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,6vw,4.5rem)]">
+            <span className="block font-[family-name:var(--font-mono)] text-xs font-normal tracking-[0.3em] text-gray-500">
+              {eyebrow}
+            </span>
+            <RevealText text={title} />
+          </h2>
+          <span className="font-[family-name:var(--font-mono)] text-xs text-gray-600">
+            {String(items.length).padStart(2, "0")}
+          </span>
+        </div>
+      </FadeIn>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {items.map((project, index) => (
+          <AnimatedProjectCard
+            key={project.id}
+            project={project}
+            index={index}
+            variant="compact"
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -58,41 +109,19 @@ export default function HomePage() {
           ))}
         </motion.section>
 
-        <section className="space-y-6">
-          <FadeIn>
-            <div className="flex items-end justify-between border-b border-white/10 pb-6">
-              <h2 className="font-black uppercase leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,6vw,4.5rem)]">
-                <span className="block font-[family-name:var(--font-mono)] text-xs font-normal tracking-[0.3em] text-gray-500">
-                  Selected
-                </span>
-                <RevealText text="Projects" />
-              </h2>
-              <Link
-                href="/resume"
-                className="text-[#FFD700] text-sm flex items-center gap-1 hover:gap-2 transition-all group"
-              >
-                View all
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </motion.span>
-              </Link>
-            </div>
-          </FadeIn>
+        <ProjectSection
+          id="apps"
+          eyebrow="Mobile"
+          title="Apps"
+          items={appProjects()}
+        />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <AnimatedProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                variant="compact"
-              />
-            ))}
-          </div>
-        </section>
+        <ProjectSection
+          id="web"
+          eyebrow="Web"
+          title="Websites"
+          items={webProjects()}
+        />
 
         <section className="space-y-6">
           <FadeIn>

@@ -18,7 +18,9 @@ export default function NavBar() {
 
   return (
     <motion.nav
-      className="sticky top-0 z-50 bg-[#111]/90 backdrop-blur-md border-b border-gray-800 shadow-lg"
+      // No backdrop-blur: on a sticky bar it re-blurs the page behind it every
+      // scroll frame, and at 96% opacity you cannot see it anyway.
+      className="sticky top-0 z-50 bg-[#111]/[0.96] border-b border-gray-800 shadow-lg"
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}

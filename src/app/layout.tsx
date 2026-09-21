@@ -16,9 +16,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wajahat Hassan | React & React Native Developer",
+  title: "Wajahat Hassan | Full-Stack Developer — Web, Mobile & Backend",
   description:
-    "Portfolio of Wajahat Hassan — React & React Native Developer with 4+ years of experience building scalable web applications, mobile apps, fintech platforms, and modern user interfaces.",
+    "Portfolio of Wajahat Hassan — Full-Stack Developer with 4+ years of experience building web applications, cross-platform mobile apps, and Node.js backends, with hands-on QA and deployment across Vercel, the App Store and Google Play.",
 };
 
 export default function RootLayout({

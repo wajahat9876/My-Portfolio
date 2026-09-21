@@ -38,6 +38,49 @@ body {
   }
 }
 
+/* Ambient background orbs — transform-only so the compositor handles it. */
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(30px, -25px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-20px, 15px, 0) scale(0.95);
+  }
+}
+
+.orb {
+  animation-name: orb-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+/* Marquee — CSS keyframes instead of a JS animation loop. */
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb,
+  .marquee-track {
+    animation: none;
+  }
+}
+
 @keyframes gradient-shift {
   0%,
   100% {

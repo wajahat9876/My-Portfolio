@@ -27,10 +27,6 @@ export function Hero() {
       className="relative flex min-h-[92vh] flex-col justify-center px-6 pb-16 pt-28"
     >
       <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-6xl">
-        <p className="mb-6 font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.35em] text-gray-500">
-          <RevealText text="Portfolio — 2026" />
-        </p>
-
         {/* Oversized stacked name */}
         <h1 className="font-[family-name:var(--font-display)] font-black uppercase leading-[0.85] tracking-[-0.03em]">
           <span className="block text-[clamp(3rem,13vw,10rem)] text-white">
@@ -56,7 +52,7 @@ export function Hero() {
         <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <p className="max-w-xl text-lg leading-relaxed text-gray-400">
             <RevealText
-              text="I build high-performance React websites and React Native mobile apps — from fintech platforms to solar analytics and social products."
+              text="I build web apps, cross-platform mobile apps and the backends behind them — then test and ship them to production. Fintech, solar analytics and social products."
               delay={0.2}
             />
           </p>

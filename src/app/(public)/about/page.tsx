@@ -1,5 +1,6 @@
 "use client";
 
+import { CertificateList } from "@/components/certificates/CertificateList";
 import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
 import { personalInfo, skillCategories } from "@/data/portfolio";
@@ -68,6 +69,8 @@ export default function AboutPage() {
             ))}
           </div>
         </section>
+
+        <CertificateList />
       </div>
     </div>
   );

@@ -1,37 +1,34 @@
-"use client";
-
-import * as motion from "framer-motion/client";
-
 const orbs = [
-  { size: 420, x: "10%", y: "15%", delay: 0, duration: 22 },
-  { size: 320, x: "75%", y: "8%", delay: 2, duration: 18 },
-  { size: 280, x: "60%", y: "55%", delay: 4, duration: 24 },
-  { size: 200, x: "20%", y: "70%", delay: 1, duration: 20 },
+  { size: 420, x: "10%", y: "15%", delay: "0s", duration: "22s" },
+  { size: 320, x: "75%", y: "8%", delay: "-4s", duration: "18s" },
+  { size: 280, x: "60%", y: "55%", delay: "-9s", duration: "24s" },
+  { size: 200, x: "20%", y: "70%", delay: "-2s", duration: "20s" },
 ];
 
+/**
+ * Ambient gold orbs.
+ *
+ * Drawn as radial gradients rather than blurred circles: a `blur-3xl` filter
+ * on four large layers forces a re-raster every frame and was the main cause
+ * of scroll jank. A gradient looks the same here and costs nothing.
+ * Animation is CSS so it runs off the main thread.
+ */
 export function AnimatedBackground() {
   return (
-    <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {orbs.map((orb, index) => (
-        <motion.div
+        <div
           key={index}
-          className="absolute rounded-full bg-[#FFD700]/[0.04] blur-3xl"
+          className="orb absolute rounded-full"
           style={{
             width: orb.size,
             height: orb.size,
             left: orb.x,
             top: orb.y,
-          }}
-          animate={{
-            x: [0, 30, -20, 0],
-            y: [0, -25, 15, 0],
-            scale: [1, 1.08, 0.95, 1],
-          }}
-          transition={{
-            duration: orb.duration,
-            delay: orb.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
+            background:
+              "radial-gradient(circle, rgba(255,215,0,0.10) 0%, rgba(255,215,0,0.04) 45%, transparent 70%)",
+            animationDuration: orb.duration,
+            animationDelay: orb.delay,
           }}
         />
       ))}

@@ -3,6 +3,7 @@
 import { AnimatedProjectCard } from "@/components/projects/ProjectCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
+import { CertificateList } from "@/components/certificates/CertificateList";
 import { education, experience, personalInfo, projects } from "@/data/portfolio";
 import { hoverLift, smoothTransition, springTransition } from "@/lib/animations";
 import * as motion from "framer-motion/client";
@@ -115,6 +116,8 @@ export default function ResumePage() {
             </FadeIn>
           ))}
         </section>
+
+        <CertificateList />
       </div>
     </div>
   );

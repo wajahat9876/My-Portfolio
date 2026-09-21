@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "motion/react";
 
 /**
  * Edge-to-edge scrolling strip of tech names. The list is rendered twice so
@@ -21,10 +18,12 @@ export function Marquee({
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-black to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-black to-transparent" />
 
-      <motion.div
-        className="flex w-max gap-10 whitespace-nowrap"
-        animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
-        transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
+      <div
+        className="marquee-track flex w-max gap-10 whitespace-nowrap"
+        style={{
+          animationDuration: `${speed}s`,
+          animationDirection: reverse ? "reverse" : "normal",
+        }}
       >
         {[0, 1].map((copy) => (
           <div key={copy} className="flex gap-10" aria-hidden={copy === 1}>
@@ -39,7 +38,7 @@ export function Marquee({
             ))}
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

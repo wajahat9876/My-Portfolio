@@ -13,17 +13,25 @@ export type Project = {
   domain?: string;
   /** Tailwind gradient stops for the banner backdrop behind the frame. */
   accent?: string;
+  /** Longer write-up shown on the project detail page. */
+  overview?: string;
+  /** What was actually built, as bullets on the detail page. */
+  contributions?: string[];
+  /** Extra screenshots for the detail page gallery. Empty = placeholders. */
+  gallery?: string[];
+  /** Demo video, detail page only. Needs a poster frame beside it. */
+  video?: { src: string; poster: string };
 };
 
 export const personalInfo = {
   name: "Wajahat Hassan",
-  title: "React & React Native Developer",
+  title: "Full-Stack Developer — Web, Mobile & Backend",
   email: "wajahathassan9876@gmail.com",
   phone: "+923043630295",
   github: "https://github.com/wajahat9876",
   linkedin: "https://linkedin.com/in/wajahat-hassan-321aa2264",
   summary:
-    "Results-driven React & React Native Developer with 4+ years of experience building scalable mobile applications and modern React websites. Proven expertise in React, React Native, TypeScript, Next.js, Redux Toolkit, Expo, Supabase, Firebase, and RevenueCat. Skilled at crafting responsive web UIs, optimizing app performance, implementing secure authentication, and collaborating with remote, cross-functional teams. Passionate about delivering user-centric, maintainable, and high-performing solutions across web and mobile.",
+    "Results-driven Full-Stack Developer with 4+ years of experience shipping web applications, cross-platform mobile apps, and the backends behind them. Proven expertise in React, Next.js, React Native, TypeScript, Node.js, Redux Toolkit, Expo, Supabase, and Firebase. Comfortable owning a feature end to end — API and database design, responsive UI, automated and manual QA, and release to production on Vercel, the App Store, and Google Play. Works fluently with AI-assisted tooling such as Claude Code and Cursor to move faster without giving up code quality.",
 };
 
 export const skillCategories = [
@@ -39,6 +47,7 @@ export const skillCategories = [
       "Redux Toolkit",
       "Expo Router",
       "Node.js",
+      "SQL",
     ],
   },
   {
@@ -68,22 +77,54 @@ export const skillCategories = [
     ],
   },
   {
-    title: "Backend & Services",
+    title: "Backend & Databases",
     skills: [
       "Node.js",
+      "Express",
+      "REST API Design",
       "Supabase",
+      "PostgreSQL",
       "Firebase",
-      "RESTful APIs",
+      "Edge Functions",
       "JWT Authentication",
+      "Row Level Security",
       "Secure Storage (MMKV)",
     ],
   },
   {
-    title: "DevOps & Tools",
+    title: "Testing & QA (SQA)",
+    skills: [
+      "Manual QA",
+      "Test Case Design",
+      "Regression Testing",
+      "Jest",
+      "React Testing Library",
+      "API Testing (Postman)",
+      "Cross-Device Testing",
+      "Bug Reporting & Triage",
+    ],
+  },
+  {
+    title: "AI-Assisted Development",
+    skills: [
+      "Claude Code",
+      "Cursor",
+      "GitHub Copilot",
+      "Prompt Engineering",
+      "AI Code Review",
+      "LLM API Integration",
+    ],
+  },
+  {
+    title: "DevOps & Deployment",
     skills: [
       "Git/GitHub",
       "CI/CD",
+      "Vercel",
+      "EAS Build & Submit",
       "OTA Updates (Expo)",
+      "App Store & Play Store Releases",
+      "Environment Management",
       "RevenueCat",
       "In-App Purchases",
       "Push Notifications",
@@ -131,6 +172,12 @@ export const experience = [
     ],
   },
 ];
+
+/** Mobile apps — anything presented in a phone frame. */
+export const appProjects = () => projects.filter((p) => p.frame === "phone");
+
+/** Web projects — anything presented in browser chrome. */
+export const webProjects = () => projects.filter((p) => p.frame !== "phone");
 
 export const projects: Project[] = [
   {
@@ -213,6 +260,14 @@ export const projects: Project[] = [
     screenshot: "/projects/screenshots/muslim-hearts.jpg",
     frame: "phone",
     accent: "from-rose-500/25 via-pink-600/10 to-transparent",
+    gallery: [
+      "/projects/gallery/muslim-hearts/discover.jpg",
+      "/projects/gallery/muslim-hearts/compatibility.jpg",
+      "/projects/gallery/muslim-hearts/signature.jpg",
+      "/projects/gallery/muslim-hearts/nudge.jpg",
+      "/projects/gallery/muslim-hearts/filters.jpg",
+      "/projects/gallery/muslim-hearts/verification.jpg",
+    ],
   },
   {
     id: "onetrionix",
@@ -247,6 +302,18 @@ export const projects: Project[] = [
     frame: "phone",
     accent: "from-sky-500/25 via-cyan-600/10 to-transparent",
     github: "https://github.com/wajahat9876/flappy-bird",
+    overview:
+      "A faithful rebuild of Flappy Bird in React Native, written to explore game-loop timing and gesture-driven physics on mobile. The bird, pipes, parallax ground and collision detection all run on the UI thread through Reanimated, so the frame rate holds steady while JavaScript handles scoring and game state.",
+    contributions: [
+      "Built the game loop and gravity/flap physics with Reanimated worklets, keeping animation off the JS thread.",
+      "Implemented pixel-accurate collision detection between the bird and procedurally spawned pipe pairs.",
+      "Added score tracking, a Get Ready state, and game-over/restart flow.",
+      "Recreated the original sprite art and parallax scrolling background for an authentic feel.",
+    ],
+    video: {
+      src: "/projects/videos/flappy-bird.mp4",
+      poster: "/projects/videos/flappy-bird-poster.jpg",
+    },
   },
 ];
 
@@ -255,6 +322,40 @@ export const education = [
     degree: "BS Computer Science",
     institution: "University of Wah, Pakistan",
     period: "May 2021",
+  },
+];
+
+export type Certificate = {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialId: string;
+  /** Thumbnail of the certificate's first page. */
+  image: string;
+  /** The original PDF, opened when the card is clicked. */
+  pdf: string;
+  /** Issuer's public verification page, when one exists. */
+  verifyUrl?: string;
+};
+
+export const certificates: Certificate[] = [
+  {
+    title: "Cybersecurity",
+    issuer: "Asian Development Bank Institute (ADBI)",
+    date: "September 2026",
+    credentialId: "195098-178-987-1642",
+    image: "/certificates/adbi-cybersecurity.jpg",
+    pdf: "/certificates/adbi-cybersecurity.pdf",
+    verifyUrl:
+      "https://elearning-adbi.org/certificate-verifier/?&code=195098-178-987-1642",
+  },
+  {
+    title: "Critical Thinking in the AI Era",
+    issuer: "HP LIFE — HP Foundation",
+    date: "June 2026",
+    credentialId: "72d80ace-45cf-4b40-abea-3324e809e2e2",
+    image: "/certificates/hp-life-critical-thinking-ai.jpg",
+    pdf: "/certificates/hp-life-critical-thinking-ai.pdf",
   },
 ];
 
